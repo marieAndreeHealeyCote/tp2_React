@@ -4,7 +4,7 @@
       "nom": "Séjour à Kyoto",
       "description": "Découverte des temples et jardins traditionnels.",
       "prix": 1800,
-      "pays": "Kyoto",
+      "destination": "Kyoto",
       "categorie": "Culture",
       "image": "kyoto.webp",
       "id": "1"
@@ -14,7 +14,7 @@
       "nom": "Maldives",
       "description": "Relaxer sur les magnifiques plages des îles Maldives",
       "prix": "1500",
-      "pays": "Maldives",
+      "destination": "Maldives",
       "categorie": "Aventure",
       "image": "maldives.webp"
     }

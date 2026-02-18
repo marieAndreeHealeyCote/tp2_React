@@ -6,11 +6,13 @@ export default function FormulaireForfait({ onSubmit, forfaitInitial = {} }) {
     forfaitInitial.description || "",
   );
   const [prix, setPrix] = useState(forfaitInitial.prix || "");
-  const [pays, setPays] = useState(forfaitInitial.pays || "");
+  const [destination, setDestination] = useState(
+    forfaitInitial.destination || "",
+  );
   const [categorie, setCategorie] = useState(forfaitInitial.categorie || "");
 
-  // Pays disponibles triés
-  const paysDisponibles = [
+  // Destination disponibles triés
+  const destinationDisponibles = [
     "Alaska",
     "Acores",
     "Bali",
@@ -33,13 +35,13 @@ export default function FormulaireForfait({ onSubmit, forfaitInitial = {} }) {
     setNom(forfaitInitial.nom || "");
     setDescription(forfaitInitial.description || "");
     setPrix(forfaitInitial.prix || "");
-    setPays(forfaitInitial.pays || "");
+    setDestination(forfaitInitial.destination || "");
     setCategorie(forfaitInitial.categorie || "");
   }, [forfaitInitial]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!pays) return alert("Veuillez sélectionner un pays.");
+    if (!destination) return alert("Veuillez sélectionner un destination.");
     if (!categorie) return alert("Veuillez sélectionner une catégorie.");
 
     // Génération de l'image depuis public/images
@@ -47,16 +49,16 @@ export default function FormulaireForfait({ onSubmit, forfaitInitial = {} }) {
       nom,
       description,
       prix,
-      pays,
+      destination,
       categorie,
-      image: `${pays.toLowerCase()}.webp`, // correspond à public/images/paris.webp
+      image: `${destination.toLowerCase()}.webp`, // correspond à public/images/paris.webp
     });
 
     if (!forfaitInitial.id) {
       setNom("");
       setDescription("");
       setPrix("");
-      setPays("");
+      setDestination("");
       setCategorie("");
     }
   };
@@ -99,15 +101,15 @@ export default function FormulaireForfait({ onSubmit, forfaitInitial = {} }) {
       </div>
 
       <div className="mb-4">
-        <label className="block font-semibold mb-1">Pays</label>
+        <label className="block font-semibold mb-1">Destination</label>
         <select
-          value={pays}
-          onChange={(e) => setPays(e.target.value)}
+          value={destination}
+          onChange={(e) => setDestination(e.target.value)}
           className="w-full border rounded px-3 py-2"
           required
         >
-          <option value="">-- Sélectionnez un pays --</option>
-          {paysDisponibles.map((p) => (
+          <option value="">-- Sélectionnez un destination --</option>
+          {destinationDisponibles.map((p) => (
             <option key={p} value={p}>
               {p}
             </option>
