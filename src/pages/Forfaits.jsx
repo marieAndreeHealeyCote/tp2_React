@@ -46,7 +46,10 @@ export default function Forfaits() {
       </div>
 
       {/* Liste des forfaits */}
-      <div className="mt-12 bg-gray-100 p-6 rounded-lg shadow-inner">
+      <div
+        id="liste-forfait"
+        className="mt-12 bg-gray-100 p-6 rounded-lg shadow-inner"
+      >
         <h2 className="text-xl font-bold mb-4">Forfaits disponibles</h2>
         {forfaits.length === 0 ? (
           <p className="text-gray-600">Aucun forfait pour l'instant.</p>
