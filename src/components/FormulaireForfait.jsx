@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 
-export default function FormulaireForfait({ onSubmit, forfaitInitial = {} }) {
+export default function FormulaireForfait({ forfaitInitial = {} }) {
+  const [id, setId] = useState(forfaitInitial.id || "");
   const [nom, setNom] = useState(forfaitInitial.nom || "");
   const [description, setDescription] = useState(
     forfaitInitial.description || "",
@@ -10,6 +12,7 @@ export default function FormulaireForfait({ onSubmit, forfaitInitial = {} }) {
     forfaitInitial.destination || "",
   );
   const [categorie, setCategorie] = useState(forfaitInitial.categorie || "");
+  const baseURL = "http://localhost:5000/forfaits";
 
   // Destination disponibles triés
   const destinationDisponibles = [
@@ -32,6 +35,7 @@ export default function FormulaireForfait({ onSubmit, forfaitInitial = {} }) {
 
   // Met à jour le formulaire si on modifie un forfait
   useEffect(() => {
+    setId(forfaitInitial.id || "");
     setNom(forfaitInitial.nom || "");
     setDescription(forfaitInitial.description || "");
     setPrix(forfaitInitial.prix || "");
@@ -44,22 +48,34 @@ export default function FormulaireForfait({ onSubmit, forfaitInitial = {} }) {
     if (!destination) return alert("Veuillez sélectionner un destination.");
     if (!categorie) return alert("Veuillez sélectionner une catégorie.");
 
-    // Génération de l'image depuis public/images
-    onSubmit({
-      nom,
-      description,
-      prix,
-      destination,
-      categorie,
-      image: `${destination.toLowerCase()}.webp`, // correspond à public/images/paris.webp
-    });
+    const data = {
+      nom: nom,
+      description: description,
+      prix: prix,
+      destination: destination,
+      categorie: categorie,
+      image: `${destination.toLowerCase()}.webp`,
+    };
 
-    if (!forfaitInitial.id) {
-      setNom("");
-      setDescription("");
-      setPrix("");
-      setDestination("");
-      setCategorie("");
+    if (id != "") {
+      axios
+        .put(`${baseURL}/${id}`, data)
+        .then((res) => {
+          let carte = document.querySelector("#carte-" + res.data.id);
+          carte.scrollIntoView({ behavior: "smooth" });
+        })
+        .catch((err) => console.error(err));
+    } else {
+      console.log("bon", id);
+      axios
+        .post(baseURL, data)
+        .then((res) => {
+          setTimeout(() => {
+            let carte = document.querySelector("#liste-forfait");
+            carte.scrollIntoView({ behavior: "smooth", block: "end" });
+          }, 1000);
+        })
+        .catch((err) => console.error(err));
     }
   };
 
@@ -68,6 +84,7 @@ export default function FormulaireForfait({ onSubmit, forfaitInitial = {} }) {
       onSubmit={handleSubmit}
       className="bg-white shadow-md p-6 rounded-lg max-w-md mx-auto"
     >
+      <input type="hidden" value={id} onChange={(e) => setId(e.target.value)} />
       <div className="mb-4">
         <label className="block font-semibold mb-1">Nom du forfait</label>
         <input
