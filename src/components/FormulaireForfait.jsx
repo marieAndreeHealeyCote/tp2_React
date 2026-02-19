@@ -45,7 +45,7 @@ export default function FormulaireForfait({ forfaitInitial = {} }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!destination) return alert("Veuillez sélectionner un destination.");
+    if (!destination) return alert("Veuillez sélectionner une destination.");
     if (!categorie) return alert("Veuillez sélectionner une catégorie.");
 
     const data = {
