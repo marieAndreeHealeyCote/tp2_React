@@ -10,22 +10,22 @@
       "id": "fgsa"
     },
     {
-      "nom": "Séjour à Paris",
-      "description": "Découverte des places parisiennes touristiques",
+      "nom": "Séjour aux îles Maldives",
+      "description": "Découvrir les plages magnifiques des îles exotiques.",
       "prix": "1500",
-      "destination": "Paris",
-      "categorie": "Culture",
-      "image": "paris.webp",
+      "destination": "Maldives",
+      "categorie": "Plage",
+      "image": "maldives.webp",
       "id": "fcae"
     },
     {
-      "id": "16a8",
-      "nom": "Alaska",
-      "description": "Voyage d'amoureux au froid",
+      "nom": "Séjour en Alaska",
+      "description": "Voyage en amoureux dans un paysage glacial \nà couper le souffle.",
       "prix": "500",
       "destination": "Alaska",
-      "categorie": "Plage",
-      "image": "alaska.webp"
+      "categorie": "Aventure",
+      "image": "alaska.webp",
+      "id": "16a8"
     }
   ]
 }
