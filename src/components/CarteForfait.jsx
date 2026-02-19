@@ -2,7 +2,10 @@ import React from "react";
 
 export default function CarteForfait({ forfait, onModifier, onSupprimer }) {
   return (
-    <div className="bg-white shadow-xl rounded-lg overflow-hidden mb-6 max-w-md mx-auto">
+    <div
+      id={`carte-${forfait.id}`}
+      className="bg-white shadow-xl rounded-lg overflow-hidden mb-6 max-w-md mx-auto"
+    >
       {/* Image depuis public/images */}
       <img
         src={`/images/${forfait.image}`} // ex: paris.webp
