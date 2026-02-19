@@ -18,34 +18,14 @@ export default function Forfaits() {
       .catch((err) => console.error(err));
   }, []);
 
-  // Ajouter ou modifier un forfait
-  const handleSubmit = (forfait) => {
-    if (forfaitAModifier) {
-      axios
-        .put(`${baseURL}/${forfaitAModifier.id}`, forfait)
-        .then((res) => {
-          setForfaits((prev) =>
-            prev.map((f) => (f.id === forfaitAModifier.id ? res.data : f)),
-          );
-          setForfaitAModifier(null);
-        })
-        .catch((err) => console.error(err));
-    } else {
-      axios
-        .post(baseURL, forfait)
-        .then((res) => setForfaits((prev) => [...prev, res.data]))
-        .catch((err) => console.error(err));
-    }
-
-    formRef.current.scrollIntoView({ behavior: "smooth" });
-  };
-
   // Supprimer
   const handleSupprimer = (id) => {
-    axios
-      .delete(`${baseURL}/${id}`)
-      .then(() => setForfaits((prev) => prev.filter((f) => f.id !== id)))
-      .catch((err) => console.error(err));
+    if (window.confirm("Êtes-vous sûr de vouloir supprimer ce forfait ?")) {
+      axios
+        .delete(`${baseURL}/${id}`)
+        .then(() => setForfaits((prev) => prev.filter((f) => f.id !== id)))
+        .catch((err) => console.error(err));
+    }
   };
 
   // Préparer la modification
@@ -62,10 +42,7 @@ export default function Forfaits() {
         <h1 className="text-2xl font-bold mb-4">
           Ajouter / Modifier un forfait
         </h1>
-        <FormulaireForfait
-          forfaitInitial={forfaitAModifier || {}}
-          onSubmit={handleSubmit}
-        />
+        <FormulaireForfait forfaitInitial={forfaitAModifier || {}} />
       </div>
 
       {/* Liste des forfaits */}
