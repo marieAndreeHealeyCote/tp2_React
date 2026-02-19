@@ -3,20 +3,38 @@
     {
       "nom": "Séjour à Kyoto",
       "description": "Découverte des temples et jardins traditionnels.",
-      "prix": 1800,
+      "prix": "2000",
       "destination": "Kyoto",
       "categorie": "Culture",
       "image": "kyoto.webp",
-      "id": "1"
+      "id": "fgsa"
     },
     {
-      "id": "8f54",
-      "nom": "Maldives",
-      "description": "Relaxer sur les magnifiques plages des îles Maldives",
+      "nom": "Séjour à Paris",
+      "description": "Découverte des places parisiennes touristiques",
       "prix": "1500",
-      "destination": "Maldives",
-      "categorie": "Aventure",
-      "image": "maldives.webp"
+      "destination": "Paris",
+      "categorie": "Culture",
+      "image": "paris.webp",
+      "id": "fcae"
+    },
+    {
+      "id": "3893",
+      "nom": "Séjour à Kyoto",
+      "description": "Découverte des temples et jardins traditionnels.",
+      "prix": "2000",
+      "destination": "Kyoto",
+      "categorie": "Culture",
+      "image": "kyoto.webp"
+    },
+    {
+      "id": "16a8",
+      "nom": "Alaska",
+      "description": "Voyage d'amoureux au froid",
+      "prix": "500",
+      "destination": "Alaska",
+      "categorie": "Plage",
+      "image": "alaska.webp"
     }
   ]
 }
