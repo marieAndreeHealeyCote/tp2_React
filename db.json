@@ -1,0 +1,22 @@
+{
+  "forfaits": [
+    {
+      "nom": "Séjour à Kyoto",
+      "description": "Découverte des temples et jardins traditionnels.",
+      "prix": "2000",
+      "destination": "Kyoto",
+      "categorie": "Culture",
+      "image": "kyoto.webp",
+      "id": "fgsa"
+    },
+    {
+      "nom": "Séjour aux îles Maldives",
+      "description": "Découvrir les plages magnifiques des îles exotiques.",
+      "prix": "2000",
+      "destination": "Maldives",
+      "categorie": "Plage",
+      "image": "maldives.webp",
+      "id": "fcae"
+    }
+  ]
+}
